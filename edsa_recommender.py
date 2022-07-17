@@ -45,14 +45,63 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Recommender System","Solution Overview"]
+    # Creates a main title and subheader on your page -
+    # these are static across all pages
+    # Creating sidebar with selection box -
+    st.sidebar.image("log.jpeg", width =150)
+    st.sidebar.title("Movie Recommender BOT®")
+    st.sidebar.title("Menu")  
+    page_options = ["Meet the Team","Information","EDA","Recommender System","Solution Overview"]
 
     # -------------------------------------------------------------------
     # ----------- !! THIS CODE MUST NOT BE ALTERED !! -------------------
     # -------------------------------------------------------------------
-    page_selection = st.sidebar.selectbox("Choose Option", page_options)
+    page_selection = st.sidebar.selectbox("Choose Option",page_options)
+    
+    # Building the Meet the Team page
+    if page_selection =="Meet the Team":
+        # Header contents
+        #st.image("Frank.jpeg", caption="Director", width=200)
+        #Display Images side by side        
+        from PIL import Image        
+        col1, col2 = st.columns(2)
+        with col1:
+            st.header("Muhammad Yahya")
+            st.subheader("President")             
+            st.image('Yahya.jpeg', width =300)
+        with col2:
+            st.header("Rachael Njuguna")
+            st.subheader("Vice-President")             
+            st.image('Recheal.jpeg', width =360)                                   
+        col3, col4 = st.columns(2)        
+        with col3:
+            st.header("Francis Ikegwu")
+            st.subheader("Cloud expert")            
+            st.image('Frank.jpeg', width=300)            
+        with col4:
+            st.header("Taiwo Aremu")
+            st.subheader("Director Strategies ")             
+            st.image('Taiwo.jpeg', width =300)                      
+        col5, col6 = st.columns(2)             
+        with col5:
+            st.header("Molapo kgarose")
+            st.subheader("Technical Operations")             
+            st.image('Molapo.jpeg', width =300)                         
+                
+        st.subheader("More information")
+        if st.checkbox('Show contact information'): # data is hidden if box is unchecked
+            st.info("francisikegwu@yahoo.com, yahyaolalekan@gmail.com, molapokgarose@gmail.com, taiwo.it@gmail.com,  rachaelnjuguna418@gmail.com") 
+        #with st.expander("Expand to see Company's video profile"):       
+            #video_file = open('Video.mp4', 'rb')
+            #video_bytes = video_file.read()
+            #st.video(video_bytes)            
+        #st.sidebar.subheader("Defining growth through data")            
+            #st.success("Text Categorized as: {}".format(prediction))
+    
+    # Building the Recommender System page
     if page_selection == "Recommender System":
         # Header contents
+        #st.image("Frank.jpeg", caption="Director", width=200)
         st.write('# Movie Recommender Engine')
         st.write('### EXPLORE Data Science Academy Unsupervised Predict')
         st.image('resources/imgs/Image_header.png',use_column_width=True)
@@ -106,7 +155,36 @@ def main():
 
     # You may want to add more sections here for aspects such as an EDA,
     # or to provide your business pitch.
-
+    
+    # Building out the EDA page
+    if page_selection == "EDA":
+        st.title("Exploratory Data Analysis")
+        st.subheader("EDA Chart")  
+        #st.image('EDA_pix.jpg')
+        st.subheader("Graph representation of the models used")        
+        #st.image('model_chart.jpg')        
+        st.subheader("Additional EDA Graph")
+        #st.image('EDA_Graph.jpg')   
+        
+        
+    # Building out the "Information" page
+    if page_selection == "Information":
+        st.title("Information Page")
+        st.subheader("Mission Statement")
+        st.info("To Provide an accurate and robust movie recommender BOT to companies, more mission statements will be added.")
+        st.subheader("Vision Statement")
+        st.info("A model that is able to recommend movies to client based on their previous views.")      
+        st.subheader("Will display model comparisms and how we pick the best model")
+        #st.image('model.jpg')
+        st.subheader("Charts that will be gotten from our presentation")
+        #st.image("charts.jpg")
+        st.subheader("Additional charts if need be")
+        #if st.checkbox('Show raw data'): # data is hidden if box is unchecked
+            #st.write(raw[['A', 'B']]) # will write the df to the page
+        
+       
+    
+    
 
 if __name__ == '__main__':
     main()
